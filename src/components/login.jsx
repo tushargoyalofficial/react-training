@@ -1,21 +1,30 @@
 import React, { Component } from "react";
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      email: undefined,
-      password: null
+      email: "",
+      password: ""
     };
 
     this.handleInputs = this.handleInputs.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleInputs(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  onSubmit() {
+    let sendData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.onUpdateValue(sendData);
   }
 
   render() {
@@ -38,7 +47,7 @@ class Login extends Component {
           onChange={event => this.handleInputs(event)}
         />
 
-        <button>Submit</button>
+        <button onClick={this.onSubmit}>Submit</button>
       </div>
     );
   }
