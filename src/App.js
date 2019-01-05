@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Char from "./char.jsx";
 
 class App extends Component {
   constructor() {
@@ -37,6 +38,8 @@ class App extends Component {
           />
 
           <br />
+
+          <Char name={this.state.name} removeFromInput={this.manipulateInput} />
         </header>
       </div>
     );
